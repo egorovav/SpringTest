@@ -1,8 +1,11 @@
 package org.egorovav.springtest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
 import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
@@ -17,6 +20,12 @@ import static java.nio.charset.StandardCharsets.UTF_8;
 @Configuration
 @PropertySource("classpath:application.properties")
 public class SpringTestApplicationContext {
+
+    @Bean
+    public BeanPostProcessor beanPostProcessor(@Autowired Environment env) {
+        String packageName = env.getProperty("scan_package");
+        return new BeanPostProcessorImpl(packageName);
+    }
 
     @Bean
     public AppProperty appProperty() {

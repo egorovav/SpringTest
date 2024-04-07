@@ -3,12 +3,11 @@ package org.egorovav.springtest;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
 public class SpringTest {
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(SpringTestApplicationContext.class);
 
         AppProperty appProperty = ctx.getBean("appProperty", AppProperty.class);
@@ -34,5 +33,6 @@ public class SpringTest {
         } else {
             System.out.println("Congratulations! Test is passed.");
         }
+
     }
 }
