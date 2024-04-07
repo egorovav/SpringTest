@@ -22,8 +22,8 @@ public class PropertyLoadTest {
     @Test
     public void test() {
         assertNotNull(appProperty);
-        assertEquals("/test.csv", appProperty.testPath);
-        assertEquals(3, appProperty.passValue);
+        assertEquals("/test.csv", appProperty.getTestPath());
+        assertEquals(3, appProperty.getPassValue());
     }
 
 }

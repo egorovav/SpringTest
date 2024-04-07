@@ -26,7 +26,7 @@ public class SpringTestApplicationContext {
     @Bean
     public List<TestQuestion> questions() {
         List<TestQuestion> questions = new ArrayList<>();
-        InputStream questionStream = this.getClass().getResourceAsStream(appProperty().testPath);
+        InputStream questionStream = this.getClass().getResourceAsStream(appProperty().getTestPath());
         try (InputStreamReader reader = new InputStreamReader(questionStream, UTF_8)) {
              String questionsString = FileCopyUtils.copyToString(reader);
              String[] questionStrings = questionsString.split("\n");

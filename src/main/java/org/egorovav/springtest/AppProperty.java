@@ -7,10 +7,10 @@ import org.springframework.stereotype.Component;
 public class AppProperty {
 
     @Value("${test_path}")
-    String testPath;
+    private String testPath;
 
     @Value("${pass_value}")
-    int passValue;
+    private int passValue;
 
     public String getTestPath() {
         return testPath;
