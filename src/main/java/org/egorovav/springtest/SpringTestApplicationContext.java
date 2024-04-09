@@ -1,9 +1,12 @@
 package org.egorovav.springtest;
 
+import org.egorovav.advisetest.LogAdvisor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.util.FileCopyUtils;
@@ -18,8 +21,15 @@ import java.util.List;
 import static java.nio.charset.StandardCharsets.UTF_8;
 
 @Configuration
+@EnableAspectJAutoProxy
+@ComponentScan(basePackages = "org.egorovav")
 @PropertySource("classpath:application.properties")
 public class SpringTestApplicationContext {
+
+    @Bean
+    public LogAdvisor logAdvisor() {
+        return new LogAdvisor();
+    }
 
     @Bean
     public BeanPostProcessor beanPostProcessor(@Autowired Environment env) {
